@@ -14,7 +14,9 @@ export default function CourseList() {
   
   function addCourse(e){
     e.preventDefault();
-    dispatch(addCourseTitle(course))
+    if(course !==''){
+      dispatch(addCourseTitle(course))
+    }
   }
   
   
