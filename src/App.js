@@ -1,13 +1,18 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import { PersistGate} from 'redux-persist/integration/react'
 
-import store from './store';
+import {store, persistor} from './store';
 import CourseList from './components/CourseList'
 
 function App() {
   return (
     <Provider store={store}>
-      <CourseList/>
+      <PersistGate loading={null} persistor={persistor}>
+
+        <CourseList/>
+
+      </PersistGate>
     </Provider>      
   );
 }

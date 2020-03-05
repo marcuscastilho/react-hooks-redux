@@ -1,24 +1,18 @@
 import { createStore } from 'redux';
+import {persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 
-const INITIAL_STATE = {
-    data:[
-        'React Native',
-        'React JS',
-        'Node JS'
-    ],
+import rootReducer from './reducer/index'
+
+const persistConfig = {
+    key: 'root',
+    storage
 }
 
-function courses(state = INITIAL_STATE, action){
-    switch(action.type){
-        case 'ADD_COURSE':
-            if(!state.data.includes(action.title)) return { ...state, data: [...state.data, action.title]};
-            return state
-        default:
-            return state;
-    }
-}
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 
-const store = createStore(courses);
+const store = createStore(persistedReducer); 
+const persistor = persistStore(store)
 
 
-export default store;
+export {store, persistor};
