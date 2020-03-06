@@ -7,3 +7,8 @@ Example react + hooks + redux-persist
 ```
 yarn start
 ```
+
+## View
+```
+https://hungry-swartz-625552.netlify.com
+```
